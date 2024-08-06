@@ -1862,6 +1862,9 @@ loc_8EA0:
 
 PopulateTurnOrder:
 		
+    if (DOUBLE_TURNS_CLASS_PROPERTY=1)
+        include "code\patches\populateturnorder-new.asm"
+    else
 		lea     ((TURN_ORDER-$1000000)).w,a0
 		move.l  a0,-(sp)
 		moveq   #TURN_ORDER_LONGWORDS_COUNTER,d7
@@ -1939,6 +1942,7 @@ PopulateTurnOrder:
 		dbf     d7,@Sort_InnerLoop
 		dbf     d6,@Sort_MainLoop
 		rts
+    endif
 
     ; End of function PopulateTurnOrder
 

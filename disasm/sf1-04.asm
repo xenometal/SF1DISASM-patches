@@ -10327,7 +10327,11 @@ sub_2397C:
 		move.b  CLASSDEF_OFFSET_PROPERTIES(a0),d1
 		andi.w  #$40,d1 
 		asr.w   #6,d1
+    if (DOUBLE_TURNS_CLASS_PROPERTY=1)
+        nop
+    else
 		addq.w  #1,d1
+    endif
 		movea.l (sp)+,a0
 		rts
 

@@ -8,6 +8,9 @@
 *.ips
 *.bps
 
+# But do include patches located in the appropriate folder
+!ips/*/*.*
+
 # No log files
 *.log
 

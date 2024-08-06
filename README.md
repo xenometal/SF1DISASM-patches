@@ -1,7 +1,11 @@
-SF1DISASM
-=========
+SF1DISASM-patches
+=================
 
 A disassembly of the game "Shining Force" for documentation and fan-project purposes, which can be assembled back into a bit-perfect replica of the original rom file.
+
+This fork incorporates build options for the purpose of producing IPS patches that can be applied to the original rom while preserving compatibility with [SF1Edit](https://github.com/ShiningForceCentral/SF1Edit).
+
+The original project can be found [here](https://github.com/ShiningForceCentral/SF1DISASM).
 
 
 The purpose of this project will be to provide a disassembly of Shining Force with the following goals in mind : 

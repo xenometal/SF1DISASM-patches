@@ -2337,7 +2337,11 @@ byte_BE460:     dc.b 3
 		dc.b   3
 		dc.b $95 
 layout_SoundTestWindow:
+    if (FIX_SOUND_TEST_WINDOW_LAYOUT=1)
+        include "data/graphics/tech/windowlayouts/wl-soundtest-fix.asm"
+    else
 		incbin "data/graphics/tech/windowlayouts/wl-soundtest.bin"
+    endif
 ShiningForceLogoTiles:
 		incbin "data/graphics/specialscreens/readerscreen/shiningforcelogotiles.bin"
 byte_BE7D8:     dc.b 4                  ; reader screen cloud tiles?

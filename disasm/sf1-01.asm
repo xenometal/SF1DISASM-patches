@@ -7228,14 +7228,24 @@ InitializeMain:
 		bsr.w   EnableInterrupts
 		bsr.w   WaitForVInt     
 		bsr.w   DisableInterrupts
+    if (EASY_DEBUG_MODE=1)
+		cmpi.b  #INPUT_START,(P2_INPUT).l
+		bne.s   loc_30BC
+        move.w  #-1,((DEBUG_MODE_ACTIVATED-$1000000)).w ; set both debug mode toggles at once
+    else
 		cmpi.b  #INPUT_B|INPUT_C|INPUT_A|INPUT_START,(P2_INPUT).l
 		bne.s   loc_30BC
 		move.b  #1,((DEBUG_MODE_UNLOCKED-$1000000)).w
+    endif
 loc_30BC:
 		jsr     j_DisplaySegaLogo
 		jsr     PlayIntro
 		bsr.w   DisplayReaderScreen
+    if (UNLOCK_SOUND_TEST=1)
+		jsr     debugMode_CheckInputForSoundTest
+    else
 		jsr     j_debugMode_SoundTest
+    endif
 		tst.b   ((DEBUG_MODE_ACTIVATED-$1000000)).w
 		beq.s   loc_30FC
 		btst    #INPUT_BIT_A,(P1_INPUT).l
